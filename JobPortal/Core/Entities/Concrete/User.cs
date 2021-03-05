@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Entities.Concrete
 {
-    public class User : IEntity
+    public class User : EntityBase, IEntity
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -14,9 +14,5 @@ namespace Core.Entities.Concrete
         public string Biography { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
-        public bool Status { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
-
     }
 }
