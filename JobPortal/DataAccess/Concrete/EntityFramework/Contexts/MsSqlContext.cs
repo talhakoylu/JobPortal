@@ -18,7 +18,7 @@ namespace DataAccess.Concrete.EntityFramework.Contexts
         public DbSet<User> Users { get; set; }
         public DbSet<Advertisement> Advertisements { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<EfCompanyDal> Companies { get; set; }
+        public DbSet<Company> Companies { get; set; }
         public DbSet<CurriculumVitae> CurriculumVitaes { get; set; }
     }
 }
