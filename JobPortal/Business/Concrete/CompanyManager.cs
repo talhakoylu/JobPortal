@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -55,12 +57,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Company>>(result, Messages.Company.GetAllByUserIdSuccess);
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public IResult Add(Company company)
         {
             _companyDal.Add(company);
             return new SuccessResult(Messages.Company.AddSuccess);
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public async Task<IResult> AddAsync(Company company)
         {
             await _companyDal.AddAsync(company);
@@ -79,12 +83,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Company.DeleteSuccess);
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public IResult Update(Company company)
         {
             _companyDal.Update(company);
             return new SuccessResult(Messages.Company.UpdateSuccess);
         }
 
+        [ValidationAspect(typeof(CompanyValidator))]
         public async Task<IResult> UpdateAsync(Company company)
         {
             await _companyDal.UpdateAsync(company);

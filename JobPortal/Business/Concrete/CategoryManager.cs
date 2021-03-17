@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -43,12 +45,14 @@ namespace Business.Concrete
             return new SuccessDataResult<Category>(result, Messages.Category.GetByIdSuccess);
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public IResult Add(Category category)
         {
             _categoryDal.Add(category);
             return new SuccessResult(Messages.Category.AddSuccess);
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public async Task<IResult> AddAsync(Category category)
         {
             await _categoryDal.AddAsync(category);
@@ -67,12 +71,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.Category.DeleteSuccess);
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public IResult Update(Category category)
         {
             _categoryDal.Update(category);
             return new SuccessResult(Messages.Category.UpdateSuccess);
         }
 
+        [ValidationAspect(typeof(CategoryValidator))]
         public async Task<IResult> UpdateAsync(Category category)
         {
             await _categoryDal.UpdateAsync(category);

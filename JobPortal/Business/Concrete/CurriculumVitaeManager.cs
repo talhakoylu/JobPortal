@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -59,12 +61,14 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CurriculumVitae>>(result, Messages.CurriculumVitae.GetAllByUserIdSuccess);
         }
 
+        [ValidationAspect(typeof(CurriculumVitaeValidator))]
         public IResult Add(CurriculumVitae cv)
         {
             _curriculumVitaeDal.Add(cv);
             return new SuccessResult(Messages.CurriculumVitae.AddSuccess);
         }
 
+        [ValidationAspect(typeof(CurriculumVitaeValidator))]
         public async Task<IResult> AddAsync(CurriculumVitae cv)
         {
             await _curriculumVitaeDal.AddAsync(cv);
@@ -83,12 +87,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.CurriculumVitae.DeleteSuccess);
         }
 
+        [ValidationAspect(typeof(CurriculumVitaeValidator))]
         public IResult Update(CurriculumVitae cv)
         {
             _curriculumVitaeDal.Update(cv);
             return new SuccessResult(Messages.CurriculumVitae.UpdateSuccess);
         }
 
+        [ValidationAspect(typeof(CurriculumVitaeValidator))]
         public async Task<IResult> UpdateAsync(CurriculumVitae cv)
         {
             await _curriculumVitaeDal.UpdateAsync(cv);

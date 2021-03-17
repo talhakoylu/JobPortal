@@ -4,6 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.Constants.Messages;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac;
 using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -43,12 +45,14 @@ namespace Business.Concrete
             return new SuccessDataResult<OperationClaim>(result, Messages.OperationClaim.GetByIdSuccess);
         }
 
+        [ValidationAspect(typeof(OperationClaimValidator))]
         public IResult Add(OperationClaim operationClaim)
         {
             _operationClaimDal.Add(operationClaim);
             return new SuccessResult(Messages.OperationClaim.AddSuccess);
         }
 
+        [ValidationAspect(typeof(OperationClaimValidator))]
         public async Task<IResult> AddAsync(OperationClaim operationClaim)
         {
             await _operationClaimDal.AddAsync(operationClaim);
@@ -67,12 +71,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.OperationClaim.DeleteSuccess);
         }
 
+        [ValidationAspect(typeof(OperationClaimValidator))]
         public IResult Update(OperationClaim operationClaim)
         {
             _operationClaimDal.Update(operationClaim);
             return new SuccessResult(Messages.OperationClaim.UpdateSuccess);
         }
 
+        [ValidationAspect(typeof(OperationClaimValidator))]
         public async Task<IResult> UpdateAsync(OperationClaim operationClaim)
         {
             await _operationClaimDal.UpdateAsync(operationClaim);
