@@ -338,3 +338,4 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/JobPortal/WebAPI/wwwroot/uploads/cv-files

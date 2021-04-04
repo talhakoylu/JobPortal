@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Utilities.Results;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 
 namespace Business.Abstract
 {
@@ -16,7 +17,7 @@ namespace Business.Abstract
         IDataResult<List<CurriculumVitae>> GetAllByUserId(int id);
         Task<IDataResult<List<CurriculumVitae>>> GetAllByUserIdAsync(int id);
 
-        IResult Add(CurriculumVitae cv);
+        IResult Add(CurriculumVitae cv, IFormFile file);
         Task<IResult> AddAsync(CurriculumVitae cv);
         IResult Delete(CurriculumVitae cv);
         Task<IResult> DeleteAsync(CurriculumVitae cv);
