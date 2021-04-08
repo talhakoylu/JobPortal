@@ -18,10 +18,11 @@ namespace Business.Abstract
         Task<IDataResult<List<CurriculumVitae>>> GetAllByUserIdAsync(int id);
 
         IResult Add(CurriculumVitae cv, IFormFile file);
-        Task<IResult> AddAsync(CurriculumVitae cv);
-        IResult Delete(CurriculumVitae cv);
-        Task<IResult> DeleteAsync(CurriculumVitae cv);
-        IResult Update(CurriculumVitae cv);
-        Task<IResult> UpdateAsync(CurriculumVitae cv);
+        Task<IResult> AddAsync(CurriculumVitae cv, IFormFile file);
+        IResult DeleteSoft(CurriculumVitae cv);
+        IResult DeleteHard(CurriculumVitae cv);
+        Task<IResult> DeleteHardAsync(CurriculumVitae cv);
+        IResult Update(CurriculumVitae cv, IFormFile file);
+        Task<IResult> UpdateAsync(CurriculumVitae cv, IFormFile file);
     }
 }

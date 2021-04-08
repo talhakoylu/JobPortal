@@ -8,6 +8,6 @@ namespace Core.Entities.Concrete
     {
         public virtual DateTime CreatedDate { get; set; } = DateTime.Now;
         public virtual DateTime UpdatedDate { get; set; } = DateTime.Now;
-        public virtual bool Status { get; set; }
+        public virtual bool Status { get; set; } = true;
     }
 }

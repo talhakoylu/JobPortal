@@ -47,8 +47,13 @@ namespace Business.Constants.Messages
             public static string GetAllByUserIdSuccess = "Kullanıcı Id değerine ait CVler başarılı bir şekilde getirildi.";
 
             public static string AddSuccess = "CV başarılı bir şekilde eklendi.";
-            public static string DeleteSuccess = "CV başarılı bir şekilde silindi.";
+            public static string DeleteSoftSuccess = "CV çöp kutusuna taşındı.";
+            public static string DeleteHardSuccess = "CV başarılı bir şekilde kalıcı olarak silindi.";
+            public static string DeleteHardError = "CV çöp kutusuna taşındı.";
             public static string UpdateSuccess = "CV başarılı bir şekilde güncellendi.";
+
+            public static string CvFileExtensionError = "Invalid file type. You can only upload a PDF file.";
+            public static string CvFileNullError = "File field can not be null!";
         }
 
         public static class OperationClaim
